@@ -56,7 +56,7 @@ Para testar a API e suas funcionalidades pelo Swagger é necessário apenas aces
 
 **Após as transporadoras estarem configuradas, podemos partir para o calculo do frete, na rota: POST /freight**
 
-Será necessário enviar um paylaod contendo as informações do pacote que deseja enviar, neste formato:
+Será necessário enviar um paylaod contendo as informações do pacote que deseja postar, neste formato:
 ```
 {
    "dimension":{
