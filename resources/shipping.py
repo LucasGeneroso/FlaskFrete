@@ -1,25 +1,25 @@
 from flask import request
 from flask_restplus import Resource, fields
-
-from models.shipping import ShippingModel
-from schemas.shipping import ShippingSchema
-from models.shipping import FreigthModel
-from schemas.shipping import FreigthSchema
+from models.shipping import ShippingModel, FreigthModel
+from schemas.shipping import ShippingSchema, DimensionSchema, FreigthSchema
 
 from server.instance import server
 
+# --- namespaces --- #
 shipping_ns = server.shipping_ns
 freigth_ns = server.freigth_ns
 
+# --- not found messages --- #
 ITEM_NOT_FOUND = "Shipping not found."
 FREIGHT_NOT_FOUND = "no carrier was elected"
 
+# --- schemas --- #
 shipping_schema = ShippingSchema()
 shipping_list_schema = ShippingSchema(many=True)
 freigth_schema = FreigthSchema()
 freigth_list_schema = FreigthSchema(many=True)
 
-# Model required by flask_restplus for expect
+# --- expected items --- # 
 shipping_item = shipping_ns.model('Shipping', {
     'carrier_name': fields.String(),
     'constant_freight_calc': fields.Float(),
@@ -31,18 +31,17 @@ shipping_item = shipping_ns.model('Shipping', {
 })
 
 freight_item = freigth_ns.model('Freigth', {
-    'altura': fields.Float(),
-    'largura': fields.Float(),
-    'peso': fields.Float()
+    'dimension': fields.Nested(freigth_ns.model('Dimension', {
+            'heigth': fields.Float(),
+            'width': fields.Float()
+            }
+        )
+    ),
+    'weight': fields.Float()
 })
 
-# arrumar o payload de post do matchFreach, que nao ta igual a kabum pede
-# trazer o valor do frete em float
-# arrumar pra trazer ordenado sempre os mesmos campos no get
-# deixar a api em portgues igual da doc
 
 class Shipping(Resource):
-
     def get(self, id):
         shipping_data = ShippingModel.find_by_id(id)
         if shipping_data:
@@ -76,8 +75,8 @@ class Shipping(Resource):
         shipping_data.save_to_db()
         return shipping_schema.dump(shipping_data), 200
 
-class ShippingList(Resource):
 
+class ShippingList(Resource):
     @shipping_ns.doc('Get all the Items')
     def get(self):
         return shipping_list_schema.dump(ShippingModel.find_all()), 200
@@ -92,20 +91,19 @@ class ShippingList(Resource):
 
         return shipping_schema.dump(shipping_data), 201
 
-class MatchFreigth(Resource):
 
+class MatchFreigth(Resource):
     @freigth_ns.expect(freight_item)
     @freigth_ns.doc('Create an Item')
     def post(self):
         freigth_json = request.get_json()
-
-        r_height = freigth_json['altura']
-        r_width = freigth_json['largura']
-        r_weight = freigth_json['peso']
+ 
+        r_height = freigth_json['dimension']['heigth']
+        r_width = freigth_json['dimension']['width']
+        r_weight = freigth_json['weight']
 
         freigth_data = FreigthModel.freight_calc(r_height, r_width, r_weight)
 
         if freigth_data:
             return freigth_data, 201
         return {'message': FREIGHT_NOT_FOUND, 'return': '[]'}, 404
-

@@ -51,7 +51,7 @@ class ShippingModel(db.Model):
 
 
 class FreigthModel(db.Model):
-    __tablename__ = "freigth"
+    __tablename__ = "freights"
 
     id = db.Column(db.Integer, primary_key=True)
     height = db.Column(db.Float, nullable=False)

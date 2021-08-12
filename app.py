@@ -2,7 +2,6 @@ from flask import Flask, Blueprint, jsonify
 from flask_restplus import Api
 from ma import ma
 from db import db
-
 from resources.shipping import Shipping, ShippingList, MatchFreigth, shipping_ns 
 from marshmallow import ValidationError
 
@@ -14,7 +13,6 @@ app = server.app
 @app.before_first_request
 def create_tables():
     db.create_all()
-
 
 @api.errorhandler(ValidationError)
 def handle_validation_error(error):
