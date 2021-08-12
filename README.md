@@ -50,9 +50,9 @@ Para testar a API e suas funcionalidades pelo Swagger é necessário apenas aces
 
 ![image](https://user-images.githubusercontent.com/36650872/129263903-6743d420-a457-4a9a-9dfa-8391dc2e8f4a.png)
 
-Para iniciar os testes, é preciso criar as transporadoras com as informações que você deseja em  **POST /shippings**
-Você também pode ver todas as transportadoras já criadas em **GET /shippings**
-Assim como também pode consultar ou deletar uma especifica que deseja em **GET /shippings/<id>** e **DELETE /shippings/<id>**
+- Para iniciar os testes, é preciso criar as transporadoras com as informações que você deseja em  **POST /shippings**
+- Você também pode ver todas as transportadoras já criadas em **GET /shippings**
+- Assim como também pode consultar ou deletar uma especifica que deseja em **GET /shippings/<id>** e **DELETE /shippings/<id>**
 
 **Após as transporadoras estarem configuradas, podemos partir para o calculo do frete, na rota: POST /freight**
 
