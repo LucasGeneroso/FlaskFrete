@@ -68,6 +68,7 @@ Para testar a API e suas funcionalidades pelo Swagger é necessário apenas aces
 - Você também pode ver todas as transportadoras já criadas em **GET /shippings**
 - Assim como também pode consultar ou deletar uma especifica que deseja em **GET /shippings/<id>** e **DELETE /shippings/<id>**
 
+
 **Após as transporadoras estarem configuradas, podemos partir para o calculo do frete, na rota: POST /freight**
 
 Será necessário enviar um paylaod contendo as informações do pacote que deseja postar, neste formato:
@@ -82,7 +83,7 @@ Será necessário enviar um paylaod contendo as informações do pacote que dese
 ```
 e então o retorno será das transportadoras cadastradas que estão elegiveis para realizar a entrega. Caso nenhuma se encaixe, o resto será uma lista vázia.
    
-**Exemplo de retorno**
+**Exemplo de retorno:**
 ```
 [
     {
