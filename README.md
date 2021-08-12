@@ -51,6 +51,20 @@ Para testar a API e suas funcionalidades pelo Swagger é necessário apenas aces
 ![image](https://user-images.githubusercontent.com/36650872/129263903-6743d420-a457-4a9a-9dfa-8391dc2e8f4a.png)
 
 - Para iniciar os testes, é preciso criar as transporadoras com as informações que você deseja em  **POST /shippings**
+
+**Exemplo de payload para cadastrar uma transportadora**
+```
+{
+   "carrier_name":"JADLOG",
+   "constant_freight_calc":0.3,
+   "minimum_height":10,
+   "maximum_height":100,
+   "minimum_width":4,
+   "maximum_width":200,
+   "delivery_time":4
+}
+```
+
 - Você também pode ver todas as transportadoras já criadas em **GET /shippings**
 - Assim como também pode consultar ou deletar uma especifica que deseja em **GET /shippings/<id>** e **DELETE /shippings/<id>**
 
@@ -67,5 +81,21 @@ Será necessário enviar um paylaod contendo as informações do pacote que dese
 }
 ```
 e então o retorno será das transportadoras cadastradas que estão elegiveis para realizar a entrega. Caso nenhuma se encaixe, o resto será uma lista vázia.
+   
+**Exemplo de retorno**
+```
+[
+    {
+        "nome": "Entrega Ninja",
+        "valor_frete": 12.0,
+        "prazo_dias": 6.0
+    },
+    {
+        "nome": "Entrega KaBuM",
+        "valor_frete": 8.0,
+        "prazo_dias": 4.0
+    }
+]
+```
   
 **Caso fique em duvida em algum payload que necessite enviar na API, os modelos estão disponives logo abaixo das requisições**
