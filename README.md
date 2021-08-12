@@ -44,7 +44,7 @@ bom, com tudo funcionando vamos para os testes.
 O teste pode ser feito a partir do **Swagger** onde se encontram todos os endpoints disponíveis da API.
 
 ### Swagger
-Para testar a API e suas funcionalidades pelo Swagger é necessário apenas acessar a rota **http://localhost:5000/api/doc** em seu navegador (com o projeto já rodando, vide passos atrás).
+Para testar a API e suas funcionalidades pelo Swagger é necessário apenas acessar a rota **http://localhost:5000/api/doc** em seu navegador (com o projeto já rodando, vide passo anterior).
 
 **Você irá ver a seguinte tela**:
 
