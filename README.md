@@ -2,7 +2,9 @@
 API FLask desenvolvida para o teste da vaga de backend da KaBuM!
 
 ## Como usar
-Após baixar o projeto, será necessário criar um ambiente virtual **(ven)**, para isso execute o seguite comando nas pasta que baixou o projeto:
+Você deve baixar ou clonar o projeto deste repositório (FlaskFrete)
+
+Após baixar o projeto, será necessário criar um ambiente virtual **(venv)**, para isso execute o seguite comando na pasta que baixou o projeto:
 ```
 python -m venv venv (nome do ambiente virtual)
 ```
