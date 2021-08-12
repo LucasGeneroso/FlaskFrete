@@ -81,7 +81,7 @@ Será necessário enviar um paylaod contendo as informações do pacote que dese
    "weight":400
 }
 ```
-e então o retorno será das transportadoras cadastradas que estão elegiveis para realizar a entrega. Caso nenhuma se encaixe, o resto será uma lista vázia.
+e então o retorno será das transportadoras cadastradas que estão elegiveis para realizar a entrega. Caso nenhuma se encaixe, o retorno será uma lista vázia.
    
 **Exemplo de retorno:**
 ```
